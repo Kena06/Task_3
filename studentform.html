@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container">
+<h1>Student Data</h1>
+
+<form method="POST" name="sample">
+<br>
+    Name <input type="text" name="name"> 
+    ID: <input type="text" name="id">
+    Phone No.: <input type="tel" name="phoneno">
+    Email ID: <input type="email" name="email">
+    Result: <input type="text" name="result">
+
+    <br><br>
+    <input type="button" name="add" value="Add Data" onclick="addStudent();" class="btn btn-success"><hr>
+
+            <table id="tbl" class="table" border="1">
+                <thead>
+                <th>name</th> 
+                <th>id</th>
+                <th>phoneno</th>
+                <th>email</th>
+                <th>result</th>
+                <th> Delete</th>
+               
+                </thead>
+                
+                 <tbody>
+                     
+                 </tbody>
+             </table>
+
+</form>
+
+ <script type="text/javascript">
+       
+    function addStudent()
+    { 
+        var name=document.sample.name.value; 
+        var id=document.sample.id.value; 
+        var phoneno=document.sample.phoneno.value; 
+        var email=document.sample.email.value; 
+        var result=document.sample.result.value; 
+                      
+        var tr = document.createElement('tr');
+        
+        var td1 = tr.appendChild(document.createElement('td'));
+        var td2 = tr.appendChild(document.createElement('td'));
+        var td3 = tr.appendChild(document.createElement('td'));
+        var td4 = tr.appendChild(document.createElement('td'));
+        var td5 = tr.appendChild(document.createElement('td'));
+              var td6 = tr.appendChild(document.createElement('td'));
+  
+        td1.innerHTML=name;
+        td2.innerHTML=id;
+        td3.innerHTML=phoneno;
+        td4.innerHTML=email;
+        td5.innerHTML=result;
+        td6.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+
+
+        document.getElementById("tbl").appendChild(tr);
+    }
+
+    function UpStud(stud){
+         var rollno=document.sample.rollno.value; 
+        var name=document.sample.name.value; 
+        var s = stud.parentNode.parentNode;
+        var tr = document.createElement('tr');
+        
+        var td1 = tr.appendChild(document.createElement('td'));
+        var td2 = tr.appendChild(document.createElement('td'));
+        var td3 = tr.appendChild(document.createElement('td'));
+        var td4 = tr.appendChild(document.createElement('td'));
+        var td5 = tr.appendChild(document.createElement('td'));
+        var td6 = tr.appendChild(document.createElement('td'));
+
+        
+        td1.innerHTML='<input type="text" name="name1">';
+        td2.innerHTML='<input type="text" name="id1">';
+        td3.innerHTML='<input type="tel" name="phoneno1">';  
+        td4.innerHTML='<input type="email" name="email1">';
+        td5.innerHTML='<input type="text" name="result1">';
+        td6.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+ 
+
+        document.getElementById("tbl").replaceChild(tr, s);
+    }
+
+    function addUpStud(stud){
+       var name=document.sample.name1.value; 
+        var id=document.sample.id1.value; 
+        var phoneno=document.sample.phoneno1.value; 
+        var email=document.sample.email1.value; 
+        var result=document.sample.result1.value; 
+                      
+        var s = stud.parentNode.parentNode;
+        var tr = document.createElement('tr');
+        
+        var td1 = tr.appendChild(document.createElement('td'));
+        var td2 = tr.appendChild(document.createElement('td'));
+        var td3 = tr.appendChild(document.createElement('td'));
+        var td4 = tr.appendChild(document.createElement('td'));
+        var td5 = tr.appendChild(document.createElement('td'));
+        
+        
+        td1.innerHTML=name;
+        td2.innerHTML=id;
+        td3.innerHTML=phoneno;
+        td4.innerHTML=email;
+        td5.innerHTML=result
+        td6.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+        
+        document.getElementById("tbl").replaceChild(tr, s);
+    }
+
+    function delStudent(Stud){
+        var s=Stud.parentNode.parentNode;
+        s.parentNode.removeChild(s);
+    }
+    
+    
+    </script>
+</div>
+    </body>
+</html>
